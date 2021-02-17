@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2021_02_15_012044) do
 
   create_table "items", force: :cascade do |t|
     t.string "name"
-    t.datetime "date"
+    t.date "date"
     t.float "price"
     t.string "description"
     t.integer "category_id", null: false
