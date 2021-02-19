@@ -12,9 +12,10 @@ class ItemsController < ApplicationController
     def create
         item = Item.new(item_params)
         item.category = Category.find_or_create_by(name: params[:category])
+
         item.save 
 
-        render json: item.to_json(except: [:created_at, :updated_at])
+        render json: item.to_json(except: [:created_at, :updated_at], include: :category)
         
     end
         
