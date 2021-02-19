@@ -11,24 +11,22 @@ class ItemsController < ApplicationController
 
     def create
         item = Item.new(item_params)
-        item.category = Category.last 
-        if item.save 
-            render json: items.to_json(except: [:created_at, :updated_at, :category_id], include: :category)
+        item.category = Category.find_or_create_by(name: params[:category])
+        item.save 
 
-        else
-            render json: {error: "could not save"}
-        end
-
+        render json: item.to_json(except: [:created_at, :updated_at])
+        
     end
+        
 
     def show
         item = Item.find(params[:id])
-        render json: items.to_json(except: [:created_at, :updated_at, :category_id], include: :category)
+        render json: items.to_json(except: [:created_at, :updated_at], include: :category)
     end
 
     private
 
     def item_params
-        params.require(:item).permit(:name, :price, :description, :category)
+        params.require(:item).permit(:name, :price, :description)
     end
 end
