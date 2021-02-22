@@ -6,11 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-coffee = Category.create(name: 'coffee')
-food = Category.create(name: 'food')
-clothing = Category.create(name: 'clothing')
-credit_card = Category.create(name: 'credit_card')
-utility = Category.create(name: 'utility')
+coffee = Category.create(name: 'Coffee')
+food = Category.create(name: 'Food')
+clothing = Category.create(name: 'Clothing')
+credit_card = Category.create(name: 'Credit Card')
+utility = Category.create(name: 'Utility')
 
 
 Item.create([

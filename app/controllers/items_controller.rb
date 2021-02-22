@@ -13,10 +13,11 @@ class ItemsController < ApplicationController
         item = Item.new(item_params)
         item.category = Category.find_or_create_by(name: params[:category])
 
-        item.save 
-
-        render json: item.to_json(except: [:created_at, :updated_at], include: :category)
-        
+        if item.save 
+            render json: item.to_json(except: [:created_at, :updated_at], include: :category)
+        else 
+            render json: {error: "No Transaction Entered."}
+        end
     end
         
 
